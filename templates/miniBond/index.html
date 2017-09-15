@@ -1,0 +1,135 @@
+{% extends "miniBond/base.html" %}
+{% load staticfiles %}
+{% block title %}Future time{% endblock %}
+{% block js %}
+    <script src="{% static "js/index.js" %}"></script>
+{% endblock %}
+{% block css %}
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="bs-callout bs-callout-danger">
+        <h4>Default Callout</h4>
+        <div class="credits">
+            <div class="groupName">评级认证</div>
+            <div class="creditFirstLine">
+            <div class="creditItem">
+                <span class="ratingOrganize">银行间:</span>
+                <span class="creditIndex">23</span>
+            </div>
+            <div class="creditItem">
+                <span class="ratingOrganize">银行间:</span>
+                <span class="creditIndex">23</span>
+            </div>
+            <div class="creditItem">
+                <span class="ratingOrganize">银行间:</span>
+                <span class="creditIndex">23</span>
+            </div>
+            <div class="creditItem">
+                <span class="ratingOrganize">银行间:</span>
+                <span class="creditIndex">23</span>
+            </div>
+</div>
+        </div>
+        <div class="platformLabels">
+            <div class="groupName">评级标签</div>
+            <div>
+                <span class="">银行间</span> <span class="">银行间</span> <span class="">银行间</span>
+            </div>
+
+        </div>
+        <div class="promotions">
+              <div class="groupName">认证行动</div>
+            <div><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
+            <div><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
+            <div><a class="btn btn-danger btn-xs" href="" target="_blank">银行间</a></div>
+        </div>
+
+    </div>
+
+    <div class="bs-callout bs-callout-danger">
+        <h4>Default Callout</h4>
+        This is a default callout.
+    </div>
+
+    <div class="bs-callout bs-callout-default">
+        <h4>Default Callout</h4>
+        This is a default callout.
+    </div>
+
+
+    <!-- Table -->
+    <div id="dataList">
+        {% for pf in pfs %}
+            <div class="row show-grid">
+                <div class="col-xs-3 col-md-2 platformName">
+                    {{ pf.name }}
+                </div>
+                <div class="col-xs-3 col-md-1 creditItem">
+                    <div class="creditIndex">23</div>
+                    <div>银行间</div>
+                </div>
+                <div class="col-xs-3 col-md-1 creditItem">
+                    <div class="creditIndex">23</div>
+                    <div>银行间</div>
+                </div>
+                <div class="col-xs-3 col-md-1 creditItem">
+                    <div class="creditIndex">23</div>
+                    <div>银行间</div>
+                </div>
+                <div class="col-xs-12 col-md-7 promotions">
+                    a
+                </div>
+            </div>
+
+
+        {% endfor %}
+    </div>
+
+
+    <table class="table table-striped table-hover table-bordered pre-scrollable">
+        <tbody>
+        <tr>
+            <th>
+                债券名称
+            </th>
+            <th>
+                发行主体
+            </th>
+            <th>
+                行业
+            </th>
+            <th>
+                地区
+            </th>
+            <th>
+                违约日期
+            </th>
+
+
+        </tr>
+        {% if pfs %}
+            <div>
+                {% for pf in pfs %}
+                    {% with template_name='miniBond/'|add:pf.name|add:".html" %}
+                        {% include ""|add:template_name   with platform=pf %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+
+        {% else %}
+            <strong>There are no platform present.</strong>
+        {% endif %}
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+{% endblock %}

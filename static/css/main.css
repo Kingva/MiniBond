@@ -1,0 +1,88 @@
+
+.credits div,.promotions div,.platformLabels div{display: inline}
+
+.groupName{font-weight: bolder;
+margin-right: 15px;}
+.creditItem{
+    margin-right: 10px;
+}
+.creditotherlines{
+   /* padding-left: 76px;*/
+}
+
+.show-grid [class*="col-"] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,.2);
+    text-align: center;
+        border-bottom: none;
+    border-right: none;
+}
+.platformName,.promotions{line-height: 46px;}
+.creditItem{line-height: 23px;}
+
+ #dataList .promotions{padding-left: 15px;text-align: left;}
+ .platformName{background-color: #dff0d8;font-weight: bolder;}
+
+
+ /* Side notes for calling out things
+-------------------------------------------------- */
+
+/* Base styles (regardless of theme) */
+.bs-callout {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+     border: 1px solid #eee;
+      border-left-width: 5px;
+
+}
+.bs-callout h4 {
+  margin-top: 0;
+}
+.bs-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.bs-callout .highlight {
+  background-color: #fff;
+}
+.bs-callout code{
+        padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+/* Themes for different contexts */
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
