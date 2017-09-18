@@ -15,6 +15,14 @@ class RatingOrganization(models.Model):
 	id = models.UUIDField(primary_key=True)
 	name = models.CharField(max_length=30)
 
+class LabelText(models.Model):
+	id=models.UUIDField(primary_key=True)
+	name=models.CharField(max_length=30)
+
+class PlatformLabel(models.Model):
+	id = models.UUIDField(primary_key=True)
+	platForm = models.OneToOneField(Platform)
+	label=models.OneToOneField(LabelText)
 
 class PlatformRating(models.Model):
 	id = models.UUIDField(primary_key=True)
