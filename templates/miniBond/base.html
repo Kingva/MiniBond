@@ -23,15 +23,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light static-top sb-navbar">
-    <div class="container">
-{#        <h1>Start</h1>#}
-        <a class="navbar-brand" href="/">Start Bootstrap</a>
 
-    </div>
-</nav>
-    <!-- Carousel
-    ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -41,7 +33,7 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-{#          <img class="first-slide" src="{% static "img/banner02.jpg" %}" alt="First slide">#}
+          <img class="first-slide" src="{% static "img/banner02.jpg" %}" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               ...
@@ -49,7 +41,7 @@
           </div>
         </div>
         <div class="item">
-{#          <img class="first-slide" src="{% static "img/banner03.jpg" %}" alt="First slide">#}
+          <img class="first-slide" src="{% static "img/banner03.jpg" %}" alt="First slide">
             <div class="container">
             <div class="carousel-caption">
              ...
@@ -69,10 +61,13 @@
     </div><!-- /.carousel -->
 
 
-<div class="container-fluid">
-    {% block content %}{% endblock %}
 
-</div>
+    {% block content %}
+
+
+    {% endblock %}
+
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

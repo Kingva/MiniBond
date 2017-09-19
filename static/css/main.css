@@ -14,7 +14,6 @@ margin-right: 15px;}
     padding-top: 5px;
     padding-bottom: 5px;
     border: 1px solid #ddd;
-    border: 1px solid rgba(86,61,124,.2);
     text-align: center;
         border-bottom: none;
     border-right: none;
@@ -22,10 +21,19 @@ margin-right: 15px;}
 .platformName,.promotions{line-height: 46px;}
 .creditItem{line-height: 23px;}
 
- #dataList .promotions{padding-left: 15px;text-align: left;}
+ #dataList .promotions{text-align: left;}
  .platformName{background-color: #dff0d8;font-weight: bolder;}
 
+ #dataList .bs-callout:nth-child(odd){
+      border-left-color: #d9534f;
+ }
+ #dataList .bs-callout:nth-child(even){
+     border-left-color: #5cb85c;
+ }
 
+ #dataList .well{margin-top: 20px;}
+ .searchTags span{font-size:12px;margin-right: 20px;}
+.searchTags{padding-left: 70px;margin-top: 13px;}
  /* Side notes for calling out things
 -------------------------------------------------- */
 
