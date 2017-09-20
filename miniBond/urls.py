@@ -21,5 +21,6 @@ app_name = 'miniBond'
 urlpatterns = [
     url(r'^hello/',hello),
     url(r'^myname/',myname),
-    url(r'^index/',index,name='index')
+    url(r'^index/',index,name='index'),
+    url(r'^toWx/',toWx,name='toWx')
 ]

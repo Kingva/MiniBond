@@ -18,3 +18,8 @@ def index(request):
 	pfs=Platform.objects.all()
 	contextDict={'pfs':pfs}
 	return render(request,'miniBond/index.html',contextDict)
+
+def toWx(request):
+	# pfs=Platform.objects.all()
+	contextDict={'text':"欢迎"}
+	return render(request,'miniBond/linkToWx.html',contextDict)

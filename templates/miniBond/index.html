@@ -7,6 +7,9 @@
 {% block css %}
     <link href="{% static "css/main.css" %}" rel="stylesheet">
 {% endblock %}
+{% block header %}
+    {% include "miniBond/header.html" %}
+{% endblock %}
 
 {% block content %}
 
@@ -67,9 +70,9 @@
         </div>
         <div class="promotions">
               <div class="groupName">认证行动</div>
-            <div><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
-            <div><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
-            <div><a class="btn btn-danger btn-xs" href="" target="_blank">银行间</a></div>
+            <div class="promotionItem"><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
+            <div class="promotionItem"><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
+            <div class="promotionItem"><a class="btn btn-danger btn-sm" href="" target="_blank">银行间</a></div>
         </div>
 
     </div>

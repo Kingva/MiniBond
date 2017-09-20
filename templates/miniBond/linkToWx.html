@@ -1,0 +1,30 @@
+{% extends "miniBond/base.html" %}
+{% load staticfiles %}
+{% block title %}Future time{% endblock %}
+{% block js %}
+{#    <script src="{% static "js/index.js" %}"></script>#}
+{% endblock %}
+{% block css %}
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid" >
+<div class="row">
+    <div class="col-sm-12 col-md-8 col-md-offset-2">
+    <div class="well well-lg">
+        欢迎
+    </div>
+    </div>
+
+     <div class="col-sm-12 col-md-8 col-md-offset-2">
+         <img src="{% static "img/banner02.jpg" %}" class="img-responsive" alt="Responsive image">
+</div>
+</div>
+
+
+</div>
+
+{% endblock %}

@@ -20,7 +20,7 @@ margin-right: 15px;}
 }
 .platformName,.promotions{line-height: 46px;}
 .creditItem{line-height: 23px;}
-
+.promotionItem{margin-right: 6px;}
  #dataList .promotions{text-align: left;}
  .platformName{background-color: #dff0d8;font-weight: bolder;}
 
