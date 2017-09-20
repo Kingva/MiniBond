@@ -21,5 +21,5 @@ def index(request):
 
 def toWx(request):
 	# pfs=Platform.objects.all()
-	contextDict={'text':"欢迎"}
+	contextDict={'wxText':"欢迎你大爷",'imgName':"banner02.jpg"}
 	return render(request,'miniBond/linkToWx.html',contextDict)
