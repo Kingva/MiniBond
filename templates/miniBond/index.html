@@ -14,82 +14,123 @@
 {% block content %}
 
 
-<div class="container-fluid" id="dataList">
-<div class="row">
-    <div class="col-sm-12 col-md-8 col-md-offset-2">
-<div>
-    <form class="form-horizontal">
-        <div class="well well-lg">
+    <div class="container-fluid" id="dataList">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+                <div>
+                    <form class="form-horizontal">
+                        <div class="well well-lg">
 
-         <div class="input-group">
-    <span class="input-group-addon">搜一搜</span>
-     <input id="searchPlatform" value="" type="text" class="form-control" placeholder="Text input">
-             </div>
-            <div class="input-group searchTags">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true">我们</span>
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true">银行间</span>
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true">评级便宜</span>
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true">标签</span>
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true">我们</span>
+                            <div class="input-group">
+                                <span class="input-group-addon">搜一搜</span>
+                                <input id="searchPlatform" value="" type="text" class="form-control"
+                                       placeholder="Text input">
+                            </div>
+                            <div class="input-group searchTags">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">我们</span>
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">银行间</span>
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">评级便宜</span>
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">标签</span>
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">我们</span>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                {% for pf in pfs %}
+                    <div class="bs-callout">
+                        <h4>{{ pf.name }}</h4>
+                        <div class="credits">
+                            <div class="groupName">评级认证</div>
+                            <div class="creditFirstLine">
+                                {% for credit in pf.platformrating_set.all %}
+                                    <div class="creditItem">
+                                        <span class="ratingOrganize">{{ credit.ratingOrganization.name }}:</span>
+                                        <span class="creditIndex">{{ credit.ratingValue }}</span>
+                                    </div>
+
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+                        <div class="promotions">
+                            <div class="groupName">认证行动</div>
+                            {% for pr in pf.promotioninfo_set.all %}
+                                <div class="promotionItem">
+                                    <a class="btn btn-default  btn-sm" target="_blank"
+                                       href="{{ pr.url }}">{{ pr.promotionAgency.name }}</a>
+                                </div>
+                            {% endfor %}
+
+                             {% if pf.linktowx  %}
+                                     <div class="promotionItem">
+                                    <a class="btn btn-danger  btn-sm"  href="/minibond/towx/{{ pf.id }}">mingming</a>
+                                </div>
+                                {% endif %}
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+                <div class="bs-callout">
+                    <h4>bbDefault Callout</h4>
+                    <div class="credits">
+                        <div class="groupName">评级认证</div>
+                        <div class="creditFirstLine">
+
+                            <div class="creditItem">
+                                <span class="ratingOrganize">银行间:</span>
+                                <span class="creditIndex">23</span>
+                            </div>
+                            <div class="creditItem">
+                                <span class="ratingOrganize">银行间:</span>
+                                <span class="creditIndex">23</span>
+                            </div>
+                            <div class="creditItem">
+                                <span class="ratingOrganize">银行间:</span>
+                                <span class="creditIndex">23</span>
+                            </div>
+                            <div class="creditItem">
+                                <span class="ratingOrganize">银行间:</span>
+                                <span class="creditIndex">23</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="platformLabels">
+                        <div class="groupName">评级标签</div>
+                        <div>
+                            <span class="">银行间</span> <span class="">银行间</span> <span class="">银行间</span>
+                        </div>
+
+                    </div>
+                    <div class="promotions">
+                        <div class="groupName">认证行动</div>
+                        <div class="promotionItem"><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a>
+                        </div>
+                        <div class="promotionItem"><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a>
+                        </div>
+                        <div class="promotionItem"><a class="btn btn-danger btn-sm" href="" target="_blank">银行间</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bs-callout">
+                    <h4>ddDefault Callout</h4>
+                    This is a default callout.
+                </div>
+
+                <div class="bs-callout">
+                    <h4>Default Callout</h4>
+                    This is a default callout.
+                </div>
 
             </div>
-  </div>
-
-        </form>
-
-</div>
-    <div class="bs-callout">
-        <h4>bbDefault Callout</h4>
-        <div class="credits">
-            <div class="groupName">评级认证</div>
-            <div class="creditFirstLine">
-            <div class="creditItem">
-                <span class="ratingOrganize">银行间:</span>
-                <span class="creditIndex">23</span>
-            </div>
-            <div class="creditItem">
-                <span class="ratingOrganize">银行间:</span>
-                <span class="creditIndex">23</span>
-            </div>
-            <div class="creditItem">
-                <span class="ratingOrganize">银行间:</span>
-                <span class="creditIndex">23</span>
-            </div>
-            <div class="creditItem">
-                <span class="ratingOrganize">银行间:</span>
-                <span class="creditIndex">23</span>
-            </div>
-</div>
         </div>
-        <div class="platformLabels">
-            <div class="groupName">评级标签</div>
-            <div>
-                <span class="">银行间</span> <span class="">银行间</span> <span class="">银行间</span>
-            </div>
-
-        </div>
-        <div class="promotions">
-              <div class="groupName">认证行动</div>
-            <div class="promotionItem"><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
-            <div class="promotionItem"><a class="btn btn-default btn-sm" href="" target="_blank">银行间</a></div>
-            <div class="promotionItem"><a class="btn btn-danger btn-sm" href="" target="_blank">银行间</a></div>
-        </div>
 
     </div>
-
-    <div class="bs-callout">
-        <h4>ddDefault Callout</h4>
-        This is a default callout.
-    </div>
-
-    <div class="bs-callout">
-        <h4>Default Callout</h4>
-        This is a default callout.
-    </div>
-
-    </div>
-</div>
-
-</div>
 
 {% endblock %}

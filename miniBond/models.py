@@ -6,6 +6,7 @@ class Platform(models.Model):
 	id = models.UUIDField(primary_key=True)
 	name = models.CharField(max_length=30)
 	website = models.URLField(default='')
+	isValid = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.name
@@ -27,6 +28,16 @@ class PlatformLabel(models.Model):
 	platForm = models.OneToOneField(Platform)
 	label=models.OneToOneField(LabelText)
 
+
+class LinkToWx(models.Model):
+	id = models.UUIDField(primary_key=True)
+	platForm = models.OneToOneField(Platform)
+	wxText=models.TextField()
+	isValid = models.BooleanField(default=False)
+
+	def __str__(self):
+		return self.platForm.name
+
 class PlatformRating(models.Model):
 	id = models.UUIDField(primary_key=True)
 	platForm = models.ForeignKey(Platform)
@@ -41,6 +52,8 @@ class PlatformRating(models.Model):
 class PromotionAgency(models.Model):
 	id = models.UUIDField(primary_key=True)
 	name = models.CharField(max_length=30)
+	def __str__(self):
+		return self.name
 
 
 class PromotionInfo(models.Model):
@@ -48,7 +61,7 @@ class PromotionInfo(models.Model):
 	platForm = models.ForeignKey(Platform)
 	promotionAgency = models.ForeignKey(PromotionAgency)
 	url = models.URLField(default='')
-	idValid = models.BooleanField(default=False)
+	isValid = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.promotionAgency.name + "-" + self.platForm.name

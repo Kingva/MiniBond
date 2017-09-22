@@ -20,7 +20,7 @@ from miniBond.views import *
 app_name = 'miniBond'
 urlpatterns = [
     url(r'^hello/',hello),
-    url(r'^myname/',myname),
+    url(r'^myname/(\d{1,2})/$',myname),
     url(r'^index/',index,name='index'),
-    url(r'^toWx/',toWx,name='toWx')
+    url(r'^towx/(?P<uuid>[^/]+)/$',toWx)
 ]
