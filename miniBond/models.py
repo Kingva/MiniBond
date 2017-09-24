@@ -22,12 +22,15 @@ class RatingOrganization(models.Model):
 class LabelText(models.Model):
 	id=models.UUIDField(primary_key=True)
 	name=models.CharField(max_length=30)
+	def __str__(self):
+		return self.name
 
 class PlatformLabel(models.Model):
 	id = models.UUIDField(primary_key=True)
-	platForm = models.OneToOneField(Platform)
-	label=models.OneToOneField(LabelText)
-
+	platForm = models.ForeignKey(Platform)
+	label = models.ForeignKey(LabelText)
+	def __str__(self):
+		return self.platForm.name + "-" + self.label.name
 
 class LinkToWx(models.Model):
 	id = models.UUIDField(primary_key=True)

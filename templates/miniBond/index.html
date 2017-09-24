@@ -56,6 +56,17 @@
 
                             </div>
                         </div>
+                     {% if pf.platformlabel_set.count > 0  %}
+                     <div class="platformLabels">
+                        <div class="groupName">评级标签</div>
+                        <div>
+                            {% for pl in pf.platformlabel_set.all %}
+                            <span class="labelItem">{{ pl.label.name }}</span>
+                                   {% endfor %}
+                        </div>
+
+                    </div>
+                      {% endif %}
                         <div class="promotions">
                             <div class="groupName">认证行动</div>
                             {% for pr in pf.promotioninfo_set.all %}

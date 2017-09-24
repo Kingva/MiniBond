@@ -9,4 +9,8 @@ admin.site.register(PromotionAgency)
 admin.site.register(PromotionInfo)
 admin.site.register(LinkToWx)
 
+admin.site.register(LabelText)
+admin.site.register(PlatformLabel)
+
+
 # Register your models here.
