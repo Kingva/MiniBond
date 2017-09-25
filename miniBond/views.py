@@ -38,6 +38,6 @@ def toWx(request,uuid):
 	contextDict={'wxText':toWxItem.wxText,'imgName':toWxItem.platForm.name}
 
 	templateName = "linkToWx.html"
-	staticFileName=uuid+".html"
+	staticFileName=toWxItem.platForm.name+".html"
 	staticView(contextDict, templateName,staticFileName)
 	return render(request, "static/" + staticFileName)
