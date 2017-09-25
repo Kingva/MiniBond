@@ -4,6 +4,8 @@ from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render
 from miniBond.models import *
+from django.template.loader import render_to_string
+import os
 
 
 def hello(request):
@@ -18,9 +20,24 @@ def index(request):
 	allpfs=Platform.objects.filter(isValid=True)
 	pfs=[p for p in allpfs if p.promotioninfo_set.filter(isValid=True).count()>0 or (hasattr(p,'linktowx') and p.linktowx.isValid)]
 	contextDict={'pfs':pfs}
-	return render(request,'miniBond/index.html',contextDict)
+
+	templateName="index.html"
+	staticView(contextDict, templateName,templateName)
+	return render(request, "static/"+templateName)
+
+
+def staticView(contextDict, templateName,staticFileName):
+	static_html = 'templates/static/' + staticFileName
+	if not os.path.exists(static_html):
+		content = render_to_string('miniBond/' + templateName, contextDict)
+		with open(static_html, 'w', encoding="utf-8") as static_file:
+			static_file.write(content)
 
 def toWx(request,uuid):
 	toWxItem=LinkToWx.objects.filter(platForm__id=uuid).first()
 	contextDict={'wxText':toWxItem.wxText,'imgName':toWxItem.platForm.name}
-	return render(request,'miniBond/linkToWx.html',contextDict)
+
+	templateName = "linkToWx.html"
+	staticFileName=uuid+".html"
+	staticView(contextDict, templateName,staticFileName)
+	return render(request, "static/" + staticFileName)
