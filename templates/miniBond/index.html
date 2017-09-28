@@ -50,10 +50,7 @@
                                         <span class="ratingOrganize">{{ credit.ratingOrganization.name }}:</span>
                                         <span class="creditIndex">{{ credit.ratingValue }}</span>
                                     </div>
-
                                 {% endfor %}
-
-
                             </div>
                         </div>
                      {% if pf.platformlabel_set.count > 0  %}
@@ -64,20 +61,21 @@
                             <span class="labelItem">{{ pl.label.name }}</span>
                                    {% endfor %}
                         </div>
-
                     </div>
                       {% endif %}
                         <div class="promotions">
                             <div class="groupName">认证行动</div>
-                            {% for pr in pf.promotioninfo_set.all %}
+                            {% for pr  in  pf.promotioninfo_set.all %}
+                                {% if pr.isValid %}
                                 <div class="promotionItem">
                                     <a class="btn btn-default btn-sm logTrace" data-area="pinfo" data-target="{{ pf.name }}"
                                        data-propertydata="{{ pr.promotionAgency.name }}" target="_blank"
                                        href="{{ pr.url }}">{{ pr.promotionAgency.name }}</a>
                                 </div>
+                                {% endif %}
                             {% endfor %}
 
-                             {% if pf.linktowx  %}
+                             {% if pf.linktowx and pf.linktowx.isValid  %}
                                      <div class="promotionItem">
                                     <a class="btn btn-danger  btn-sm logTrace"
                                         data-area="pinfo" data-target="{{ pf.name }}"
