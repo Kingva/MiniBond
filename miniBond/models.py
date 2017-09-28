@@ -68,3 +68,11 @@ class PromotionInfo(models.Model):
 
 	def __str__(self):
 		return self.promotionAgency.name + "-" + self.platForm.name
+
+class ClickTrace(models.Model):
+	id=models.IntegerField(primary_key=True)
+	cookieId=models.UUIDField()
+	areaType=models.CharField(max_length=30)
+	target=models.CharField(max_length=30)
+	propertyData=models.CharField(max_length=30)
+	clickTime=models.DateTimeField()

@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from miniBond.views import *
-
+#,areaType,target,propertyData):
 app_name = 'miniBond'
 urlpatterns = [
     url(r'^hello/',hello),
     url(r'^myname/(\d{1,2})/$',myname),
     url(r'^index/',index,name='index'),
+    url(r'^log/(?P<areaType>.+)/(?P<target>.+)/(?P<propertyData>.+)/$',logTrace),
     url(r'^towx/(?P<uuid>[^/]+)/$',toWx)
 ]

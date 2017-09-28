@@ -6,7 +6,8 @@ from django.shortcuts import render
 from miniBond.models import *
 from django.template.loader import render_to_string
 import os
-
+import uuid
+from datetime import datetime
 
 def hello(request):
 	message = 'hello'
@@ -23,8 +24,10 @@ def index(request):
 
 	templateName="index.html"
 	staticView(contextDict, templateName,templateName)
-	return render(request, "static/"+templateName)
-
+	response=render(request, "static/"+templateName)
+	if "cookieId" not in request.COOKIES:
+		response.set_cookie("cookieId", uuid.uuid4())
+	return response
 
 def staticView(contextDict, templateName,staticFileName):
 	static_html = 'templates/static/' + staticFileName
@@ -32,6 +35,21 @@ def staticView(contextDict, templateName,staticFileName):
 		content = render_to_string('miniBond/' + templateName, contextDict)
 		with open(static_html, 'w', encoding="utf-8") as static_file:
 			static_file.write(content)
+
+def logTrace(request,areaType,target,propertyData):
+	trace = ClickTrace()
+	trace.areaType = areaType
+	trace.target = target
+	trace.propertyData = propertyData
+	trace.clickTime = datetime.now()
+	cookieId=request.COOKIES["cookieId"] if "cookieId" in request.COOKIES  else uuid.uuid4()
+	trace.cookieId = cookieId
+	trace.save()
+
+	response = HttpResponse('')
+	if "cookieId" not in request.COOKIES:
+		response.set_cookie("cookieId",cookieId)
+	return response
 
 def toWx(request,uuid):
 	toWxItem=LinkToWx.objects.filter(platForm__id=uuid).first()

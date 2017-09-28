@@ -17,6 +17,19 @@ $(document).ready(function () {
          $('#searchPlatform').val(text);
          refreshDataList(text);
     });
+    $('.logTrace').click(function (e) {
+        var areaType=$(this).data('area');
+        var target=$(this).data('target');
+        var propertyData=$(this).data('propertydata');
+// $.ajax({url:'/minibond/log/'+areaType+"/"+target+"/"+propertyData+"/",async:true});
+         $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'GET',
+            async:true,
+            url: '/minibond/log/'+areaType+"/"+target+"/"+propertyData+"/"
+        });
+    });
 
     function refreshDataList(text) {
         if ("" === text) {
