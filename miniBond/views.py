@@ -53,9 +53,36 @@ def logTrace(request,areaType,target,propertyData):
 
 def toWx(request,uuid):
 	toWxItem=LinkToWx.objects.filter(platForm__id=uuid).first()
-	contextDict={'wxText':toWxItem.wxText,'imgName':toWxItem.platForm.name}
+	contextDict={'wxText':toWxItem.wxText,'imgName':toWxItem.image}
 
 	templateName = "linkToWx.html"
 	staticFileName=toWxItem.platForm.name+".html"
 	staticView(contextDict, templateName,staticFileName)
 	return render(request, "static/" + staticFileName)
+
+
+def strongStaticView(contextDict, templateName,staticFileName):
+	static_html = 'templates/static/' + staticFileName
+	content = render_to_string('miniBond/' + templateName, contextDict)
+	with open(static_html, 'w', encoding="utf-8") as static_file:
+		static_file.write(content)
+
+def refreshCache(request):
+	allpfs = Platform.objects.filter(isValid=True)
+	pfs = [p for p in allpfs if
+		   p.promotioninfo_set.filter(isValid=True).count() > 0 or (hasattr(p, 'linktowx') and p.linktowx.isValid)]
+	contextDict = {'pfs': pfs}
+	templateName = "index.html"
+	strongStaticView(contextDict, templateName, templateName)
+
+	allpfs = Platform.objects.all()
+	for pf in allpfs:
+		if pf.linktowx and pf.linktowx.isValid:
+			toWxItem = LinkToWx.objects.filter(platForm__id=pf.id).first()
+			contextDict = {'wxText': toWxItem.wxText, 'imgName': toWxItem.image}
+
+			staticFileName = toWxItem.platForm.name + ".html"
+			strongStaticView(contextDict, "linkToWx.html", staticFileName)
+
+	response = HttpResponse('well done!')
+	return response

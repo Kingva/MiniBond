@@ -20,6 +20,7 @@ from miniBond.views import *
 app_name = 'miniBond'
 urlpatterns = [
     url(r'^hello/',hello),
+    url(r'^refreshCache/',refreshCache),
     url(r'^myname/(\d{1,2})/$',myname),
     url(r'^index/',index,name='index'),
     url(r'^log/(?P<areaType>.+)/(?P<target>.+)/(?P<propertyData>.+)/$',logTrace),
