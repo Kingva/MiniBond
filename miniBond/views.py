@@ -77,7 +77,7 @@ def refreshCache(request):
 
 	allpfs = Platform.objects.all()
 	for pf in allpfs:
-		if pf.linktowx and pf.linktowx.isValid:
+		if pf.linktowx:
 			toWxItem = LinkToWx.objects.filter(platForm__id=pf.id).first()
 			contextDict = {'wxText': toWxItem.wxText, 'imgName': toWxItem.image}
 
