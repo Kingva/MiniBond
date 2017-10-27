@@ -32,11 +32,13 @@ $(document).ready(function () {
     });
 
     function refreshDataList(text) {
-        if ("" === text) {
+        if ("" === text || "全部"===text) {
             $(".bs-callout").removeClass('hidden');
         }
+        else{
+            $(".bs-callout:not(:icontains(" + text + "))").addClass('hidden');
+            $(".bs-callout:icontains(" + text + ")").removeClass('hidden');
+        }
 
-        $(".bs-callout:not(:icontains(" + text + "))").addClass('hidden');
-        $(".bs-callout:icontains(" + text + ")").removeClass('hidden');
     }
 });

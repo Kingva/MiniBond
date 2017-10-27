@@ -3,6 +3,13 @@
         min-width: 480px;
         overflow: scroll;
     }
+    #footer {
+    background: grey;
+    color: white;
+    text-align: right;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    }   
 }
 #header .navbar {
     margin-bottom: 0;
@@ -71,8 +78,15 @@
 }
 
 .searchTags {
-    padding-left: 70px;
+    padding-left: 15px;
     margin-top: 13px;
+}
+#footer {
+    background: grey;
+    color: white;
+    text-align: center;
+    padding-right: 20px;
+    padding-bottom: 10px;
 }
 
 /* Side notes for calling out things
