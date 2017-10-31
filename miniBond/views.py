@@ -31,7 +31,7 @@ def index(request):
 
 def staticView(contextDict, templateName,staticFileName):
 	static_html = 'templates/static/' + staticFileName
-	if not os.path.exists(static_html):
+	if not os.path.exists(static_html) or True:
 		content = render_to_string('miniBond/' + templateName, contextDict)
 		with open(static_html, 'w', encoding="utf-8") as static_file:
 			static_file.write(content)

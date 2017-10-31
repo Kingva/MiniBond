@@ -14,10 +14,13 @@
 #header .navbar {
     margin-bottom: 0;
 }
+#header a {color:black;}
 
 #header h3 {
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .credits div, .promotions div, .platformLabels div {
@@ -42,9 +45,13 @@
     line-height: 36px;
 }
 
-.creditItem {
-
+#header nav img{
+    display:inline-block;height: 42px;border-radius:30px;
+        margin-top: 2px;
 }
+#navwords {
+     font-family:"微软雅黑";
+    display: inline-block;vertical-align: bottom;}
 
 .promotionItem {
     margin-right: 6px;
